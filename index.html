@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ku" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بانکی پرسیار | تۆڕی مەڵتیمیدیا</title>
+    <meta name="description" content="بانکی پرسیاری تۆڕی مەڵتیمیدیا - وەرزی دووەم">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+Arabic:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-effects">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+        <div class="orb orb-4"></div>
+        <canvas id="particles"></canvas>
+    </div>
+
+    <!-- ===== LANDING SCREEN ===== -->
+    <section id="landing" class="screen active">
+        <div class="landing-content">
+            <div class="logo-icon">
+                <svg viewBox="0 0 80 80" fill="none">
+                    <circle cx="40" cy="40" r="36" stroke="url(#g1)" stroke-width="2.5" opacity="0.7"/>
+                    <circle cx="40" cy="40" r="24" stroke="url(#g2)" stroke-width="2" opacity="0.5"/>
+                    <circle cx="40" cy="40" r="12" fill="url(#g3)" opacity="0.8"/>
+                    <path d="M20 40 Q30 20 40 40 Q50 60 60 40" stroke="url(#g1)" stroke-width="2" fill="none" opacity="0.6"/>
+                    <defs>
+                        <linearGradient id="g1" x1="0" y1="0" x2="80" y2="80">
+                            <stop stop-color="#a78bfa"/><stop offset="1" stop-color="#f472b6"/>
+                        </linearGradient>
+                        <linearGradient id="g2" x1="0" y1="0" x2="80" y2="80">
+                            <stop stop-color="#818cf8"/><stop offset="1" stop-color="#34d399"/>
+                        </linearGradient>
+                        <radialGradient id="g3" cx="50%" cy="50%">
+                            <stop stop-color="#c4b5fd"/><stop offset="1" stop-color="#7c3aed"/>
+                        </radialGradient>
+                    </defs>
+                </svg>
+            </div>
+            <h1 class="hero-title">بانکی پرسیار</h1>
+            <p class="hero-subtitle">تۆڕی مەڵتیمیدیا — وەرزی دووەم</p>
+            <p class="hero-desc">٥٠ پرسیار لەگەڵ وەڵام بۆ ئامادەکاریی تاقیکردنەوە</p>
+            <div class="landing-buttons">
+                <button class="btn btn-primary" onclick="startQuiz()">
+                    <span>تاقیکردنەوە</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+                <button class="btn btn-secondary" onclick="startStudy()">
+                    <span>خوێندنەوە</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+                </button>
+            </div>
+            <div class="stats-row">
+                <div class="stat-item"><span class="stat-num">٥٠</span><span class="stat-label">پرسیار</span></div>
+                <div class="stat-divider"></div>
+                <div class="stat-item"><span class="stat-num">٤</span><span class="stat-label">بەش</span></div>
+                <div class="stat-divider"></div>
+                <div class="stat-item"><span class="stat-num">٣</span><span class="stat-label">جۆر</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CATEGORY SCREEN ===== -->
+    <section id="categories" class="screen">
+        <div class="screen-inner">
+            <button class="back-btn" onclick="goTo('landing')">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                <span>گەڕانەوە</span>
+            </button>
+            <h2 class="section-title">بەشێک هەڵبژێرە</h2>
+            <p class="section-desc" id="modeLabel"></p>
+            <div class="category-grid">
+                <div class="cat-card" onclick="selectCategory('all')" data-color="purple">
+                    <div class="cat-icon">📚</div>
+                    <h3>هەموو پرسیارەکان</h3>
+                    <span class="cat-count">٥٠ پرسیار</span>
+                </div>
+                <div class="cat-card" onclick="selectCategory('mcq1')" data-color="blue">
+                    <div class="cat-icon">✅</div>
+                    <h3>هەڵبژاردنی (بەشی ١)</h3>
+                    <span class="cat-count">٢٥ پرسیار</span>
+                </div>
+                <div class="cat-card" onclick="selectCategory('descriptive')" data-color="emerald">
+                    <div class="cat-icon">📝</div>
+                    <h3>پرسیارە وەسفییەکان</h3>
+                    <span class="cat-count">٢ پرسیار</span>
+                </div>
+                <div class="cat-card" onclick="selectCategory('abbreviation')" data-color="amber">
+                    <div class="cat-icon">🔤</div>
+                    <h3>کورتکراوەکان</h3>
+                    <span class="cat-count">١١ پرسیار</span>
+                </div>
+                <div class="cat-card" onclick="selectCategory('mcq2')" data-color="rose">
+                    <div class="cat-icon">🎯</div>
+                    <h3>هەڵبژاردنی (بەشی ٢)</h3>
+                    <span class="cat-count">١٢ پرسیار</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== QUIZ SCREEN ===== -->
+    <section id="quiz" class="screen">
+        <div class="quiz-header">
+            <button class="back-btn" onclick="goTo('categories')">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            </button>
+            <div class="progress-wrapper">
+                <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+                <span class="progress-text" id="progressText"></span>
+            </div>
+            <div class="score-badge" id="scoreBadge">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <span id="scoreNum">0</span>
+            </div>
+        </div>
+        <div class="quiz-body">
+            <div class="question-card" id="questionCard">
+                <div class="q-badge" id="qBadge"></div>
+                <h3 class="q-number" id="qNumber"></h3>
+                <p class="q-text" id="qText" dir="ltr"></p>
+                <div id="optionsArea"></div>
+                <div id="answerReveal" class="answer-reveal hidden">
+                    <div class="reveal-content" id="revealContent" dir="ltr"></div>
+                </div>
+            </div>
+        </div>
+        <div class="quiz-footer">
+            <button class="btn btn-ghost" id="prevBtn" onclick="prevQuestion()">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                پێشتر
+            </button>
+            <button class="btn btn-check" id="checkBtn" onclick="checkAnswer()">پشکنین</button>
+            <button class="btn btn-reveal" id="revealBtn" onclick="revealAnswer()">پیشاندانی وەڵام</button>
+            <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()">
+                دواتر
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+        </div>
+    </section>
+
+    <!-- ===== STUDY SCREEN ===== -->
+    <section id="study" class="screen">
+        <div class="screen-inner">
+            <div class="study-header">
+                <button class="back-btn" onclick="goTo('categories')">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                    <span>گەڕانەوە</span>
+                </button>
+                <h2 class="section-title" id="studyTitle">خوێندنەوە</h2>
+            </div>
+            <div class="study-cards" id="studyCards"></div>
+        </div>
+    </section>
+
+    <!-- ===== RESULTS SCREEN ===== -->
+    <section id="results" class="screen">
+        <div class="results-content">
+            <div class="results-icon" id="resultsIcon"></div>
+            <h2 class="results-title" id="resultsTitle"></h2>
+            <p class="results-subtitle" id="resultsSubtitle"></p>
+            <div class="results-circle">
+                <svg viewBox="0 0 200 200" class="score-ring">
+                    <circle cx="100" cy="100" r="85" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="12"/>
+                    <circle cx="100" cy="100" r="85" fill="none" stroke="url(#scoreGrad)" stroke-width="12"
+                        stroke-linecap="round" stroke-dasharray="534" stroke-dashoffset="534" id="scoreRing"
+                        transform="rotate(-90 100 100)"/>
+                    <defs><linearGradient id="scoreGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#a78bfa"/><stop offset="100%" stop-color="#34d399"/>
+                    </linearGradient></defs>
+                </svg>
+                <div class="score-center">
+                    <span class="score-percent" id="scorePercent">0%</span>
+                    <span class="score-detail" id="scoreDetail"></span>
+                </div>
+            </div>
+            <div class="results-stats">
+                <div class="r-stat correct"><span class="r-stat-num" id="correctCount">0</span><span>ڕاست</span></div>
+                <div class="r-stat wrong"><span class="r-stat-num" id="wrongCount">0</span><span>هەڵە</span></div>
+                <div class="r-stat skipped"><span class="r-stat-num" id="skippedCount">0</span><span>بەتاڵ</span></div>
+            </div>
+            <div class="results-buttons">
+                <button class="btn btn-primary" onclick="goTo('categories')">دووبارە هەوڵبدەوە</button>
+                <button class="btn btn-secondary" onclick="goTo('landing')">سەرەتا</button>
+            </div>
+        </div>
+        <canvas id="confetti"></canvas>
+    </section>
+
+    <!-- ===== MUSIC PLAYER ===== -->
+    <audio id="audioPlayer" preload="auto"></audio>
+    <div class="music-player" id="musicPlayer">
+        <div class="mp-collapsed" id="mpCollapsed" onclick="togglePlayer()">
+            <div class="mp-vinyl" id="mpVinyl">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                    <circle cx="12" cy="12" r="10" stroke="url(#mg1)" stroke-width="1.5" opacity=".6"/>
+                    <circle cx="12" cy="12" r="6" stroke="url(#mg1)" stroke-width="1" opacity=".4"/>
+                    <circle cx="12" cy="12" r="2.5" fill="url(#mg2)"/>
+                    <defs>
+                        <linearGradient id="mg1" x1="0" y1="0" x2="24" y2="24">
+                            <stop stop-color="#f472b6"/><stop offset="1" stop-color="#a78bfa"/>
+                        </linearGradient>
+                        <radialGradient id="mg2"><stop stop-color="#f9a8d4"/><stop offset="1" stop-color="#c084fc"/></radialGradient>
+                    </defs>
+                </svg>
+            </div>
+            <div class="mp-bars" id="mpBars">
+                <span></span><span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="mp-expanded" id="mpExpanded">
+            <div class="mp-header">
+                <span class="mp-label">🎵 مۆسیقا</span>
+                <button class="mp-close" onclick="togglePlayer()">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                </button>
+            </div>
+            <div class="mp-song-name" id="mpSongName">Bo Toray</div>
+            <div class="mp-progress-bar" id="mpProgressBar" onclick="seekAudio(event)">
+                <div class="mp-progress-fill" id="mpProgressFill"></div>
+            </div>
+            <div class="mp-time">
+                <span id="mpCurrentTime">0:00</span>
+                <span id="mpDuration">0:00</span>
+            </div>
+            <div class="mp-controls">
+                <button class="mp-btn" onclick="prevSong()">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
+                </button>
+                <button class="mp-btn mp-play-btn" id="mpPlayBtn" onclick="togglePlay()">
+                    <svg id="playIcon" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                    <svg id="pauseIcon" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" style="display:none"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+                </button>
+                <button class="mp-btn" onclick="nextSong()">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
