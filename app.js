@@ -403,8 +403,8 @@ function launchConfetti(){
 
 // ==================== MUSIC PLAYER ====================
 const playlist = [
-  { title: 'Bo Toray', src: 'Bo Toray.mp3' },
-  { title: 'Kurmancî Here Gule', src: 'KURMANCİ HERE GULE.mp3' }
+  { title: 'Bo Toray', src: 'Bo_Toray.mp3' },
+  { title: 'Kurmancî Here Gule', src: 'Kurmanci_Here_Gule.mp3' }
 ];
 let currentSong = 0;
 let isPlaying = false;
